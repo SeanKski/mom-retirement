@@ -52,10 +52,13 @@ function changeFavicon(text) {
   canvas.height = 64;
   canvas.width = 64;
   const ctx = canvas.getContext('2d');
-  ctx.font = '64px serif';
+  ctx.font = '32px serif';
   // Change text such that it wraps to a max size of favicon (i.e. 2)
-  wrapped_text = getLines(ctx, text, 2)
-  ctx.fillText(text, 0, 64);
+//   wrapped_text = getLines(ctx, text, 2);
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillText(text, 0, 32, 64);
+  ctx.fillText('days', 0, 64, 64);
+  
 
   const link = document.createElement('link');
   const oldLinks = document.querySelectorAll('link[rel="shortcut icon"]');
@@ -85,8 +88,11 @@ function getLines(ctx, text, maxWidth) {
     return lines;
 }
 
-changeFavicon('hello')
-  
+var countDownDate = new Date("Aug 11, 2023 0:0:01").getTime();
+var now = new Date().getTime();
+var days = Math.floor(((countDownDate - now) / (1000 * 60 * 60 * 24)));
+
+changeFavicon(days)
  
 </script>
 
