@@ -53,6 +53,8 @@ function changeFavicon(text) {
   canvas.width = 64;
   const ctx = canvas.getContext('2d');
   ctx.font = '64px serif';
+  // Change text such that it wraps to a max size of favicon (i.e. 2)
+  wrapped_text = getLines(ctx, text, 2)
   ctx.fillText(text, 0, 64);
 
   const link = document.createElement('link');
@@ -63,7 +65,26 @@ function changeFavicon(text) {
   link.href = canvas.toDataURL();
   document.head.appendChild(link);
 }
-  
+
+function getLines(ctx, text, maxWidth) {
+    var words = text.split(" ");
+    var lines = [];
+    var currentLine = words[0];
+
+    for (var i = 1; i < words.length; i++) {
+        var word = words[i];
+        var width = ctx.measureText(currentLine + " " + word).width;
+        if (width < maxWidth) {
+            currentLine += " " + word;
+        } else {
+            lines.push(currentLine);
+            currentLine = word;
+        }
+    }
+    lines.push(currentLine);
+    return lines;
+}
+
 changeFavicon('hello')
   
  
