@@ -1,3 +1,3 @@
 # mom-retirement
 
-when will mary retire?  Go to index.html to find out 
+when will mary retire?  Go to https://howlonguntilmaryganderretires.com to find out 
