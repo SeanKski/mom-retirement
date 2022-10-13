@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+<link id="icon" rel="icon" type="image/x-icon" href="favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 p {
@@ -61,13 +61,13 @@ function changeFavicon(text) {
   ctx.fillText('days', 0, 64, 64);
   
 
-  const link = document.createElement('link');
-  const oldLinks = document.querySelectorAll('link[rel="shortcut icon"]');
+  const icon = document.getElementById('icon');
+  const oldLinks = document.querySelectorAll('icon[rel="shortcut icon"]');
   oldLinks.forEach(e => e.parentNode.removeChild(e));
-  link.id = 'dynamic-favicon';
-  link.rel = 'shortcut icon';
-  link.href = canvas.toDataURL();
-  document.head.appendChild(link);
+  icon.id = 'dynamic-favicon';
+  icon.rel = 'shortcut icon';
+  icon.href = canvas.toDataURL();
+  document.head.appendChild(icon);
 }
 
 function getLines(ctx, text, maxWidth) {
